@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ache Livros – Blog de livros e leitura</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#4caf8b;--g2:#00a67e;--y:#f5b50a;--r:#e8694f;--b:#4a86e8;--navy:#3d4a7a;--bg:#fff;--bg2:#f2faf6;--tx:#5d6a8a;--card:#fff;--sh:0 10px 30px rgba(61,74,122,.12);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12201c;--bg2:#172a24;--tx:#b4c4bf;--navy:#e4ecf8;--card:#1d332c;--sh:0 10px 30px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#12201c;--bg2:#172a24;--tx:#b4c4bf;--navy:#e4ecf8;--card:#1d332c;--sh:0 10px 30px rgba(0,0,0,.35)}
+html{color-scheme:light dark;scroll-behavior:smooth;scroll-padding-top:80px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 17px/1.7 Nunito,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Baloo 2',Nunito,sans-serif;color:var(--navy);line-height:1.1;margin:0}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1170px;margin:auto;padding:0 24px}
+.btn{display:inline-block;background:var(--y);color:#fff;font-weight:700;border:0;border-radius:40px;padding:14px 30px;cursor:pointer;font:700 16px Nunito;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(245,181,10,.4)}
+:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+header{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,box-shadow .3s;padding-top:env(safe-area-inset-top,0px)}
+header.s{background:var(--g1);box-shadow:0 4px 20px rgba(0,0,0,.15)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font:800 26px 'Baloo 2';color:#fff;display:flex;align-items:center;gap:10px}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--y);display:grid;place-items:center;font-style:normal;font-size:18px}
+nav a{color:#fff;font-weight:600;margin-left:28px;font-size:15px;opacity:.92}
+nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+@media(max-width:760px){nav a:not(.keep){display:none}}
+.hero{background:var(--g1);color:#fff;position:relative;overflow:hidden;padding:150px 0 110px;min-height:760px}
+.blob{position:absolute;right:-8%;top:8%;width:62%;aspect-ratio:1;background:var(--g2);animation:morph 14s ease-in-out infinite}
+@keyframes morph{0%,100%{border-radius:60% 40% 55% 45%/55% 45% 55% 45%}50%{border-radius:40% 60% 45% 55%/45% 60% 40% 55%}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:120px}}
+.hero h1{color:#fff;font-size:clamp(44px,6vw,76px);font-weight:800}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(30px);animation:up .8s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.dash{display:flex;gap:6px;margin:28px 0}.dash b{height:6px;width:6px;border-radius:6px;background:rgba(255,255,255,.4)}.dash b:nth-child(2){width:36px;background:var(--y)}
+.hero p{max-width:480px;opacity:.95;font-size:19px}
+.shelf{position:relative;height:430px;display:flex;align-items:flex-end;justify-content:center;gap:12px}
+.bk{width:62px;border-radius:6px 6px 3px 3px;box-shadow:inset -8px 0 0 rgba(0,0,0,.14),0 12px 24px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;color:#fff;font:800 15px 'Baloo 2';writing-mode:vertical-rl;letter-spacing:1px;transform-origin:bottom;animation:rise 1s cubic-bezier(.2,1.4,.4,1) backwards,sway 6s ease-in-out infinite}
+.bk:nth-of-type(1){height:250px;background:var(--r);animation-delay:.3s,0s}
+.bk:nth-of-type(2){height:330px;background:var(--b);animation-delay:.45s,.6s}
+.bk:nth-of-type(3){height:290px;background:var(--y);animation-delay:.6s,1.2s}
+.bk:nth-of-type(4){height:370px;background:#fff;color:var(--g2);animation-delay:.75s,1.8s}
+.bk:nth-of-type(5){height:270px;background:var(--navy);animation-delay:.9s,2.4s}
+@keyframes rise{from{transform:translateY(120%) rotate(8deg);opacity:0}}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+.orb{position:absolute;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:26px;box-shadow:0 0 0 5px #fff;animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-16px)}}
+.bk{border:0;padding:0;cursor:pointer;transition:filter .3s,margin .3s}.bk:hover{filter:brightness(1.12);margin-bottom:14px}.bk.on{outline:4px solid var(--y);outline-offset:4px}
+.hint{margin-top:18px;font-size:15px;opacity:.9}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 auto 48px}
+.pills button{border:0;border-radius:30px;padding:10px 22px;font:700 15px Nunito;cursor:pointer;background:var(--card);color:var(--navy);box-shadow:var(--sh);transition:transform .25s,background .25s}
+.pills button:hover{transform:translateY(-3px)}.pills button.on{background:var(--g2);color:#fff;transform:translateY(-3px)}
+.tops .book{animation:pop .55s cubic-bezier(.2,1.4,.4,1) backwards}
+.sec{padding:100px 0}.alt{background:var(--bg2)}
+.head{text-align:center;max-width:680px;margin:0 auto 56px}
+.head h2{font-size:clamp(32px,4vw,46px);font-weight:800}
+.head h2 em{font-style:normal;color:var(--g1)}
+.head .dash{justify-content:center;margin:18px 0}.head .dash b{background:#cfd8d5}.head .dash b:nth-child(2){background:var(--y)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+.ben{border-radius:14px;overflow:hidden;box-shadow:var(--sh);background:var(--card);transition:transform .35s}
+.ben:hover{transform:translateY(-8px)}
+.ben .ic{height:170px;display:grid;place-items:center;font-size:72px;transition:transform .5s}
+.ben:hover .ic{transform:scale(1.15) rotate(-6deg)}
+.ben div.t{padding:20px 22px;color:#fff;text-align:center;font-size:15px}
+.ben h3{color:#fff;font-size:26px;margin-bottom:6px}
+.c1{background:var(--b)}.c2{background:var(--r)}.c3{background:var(--y)}.c4{background:var(--g2)}
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:50px;margin-top:70px;text-align:center}
+.stats b{display:block;font:800 52px 'Baloo 2';color:var(--g1);line-height:1}
+.tops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.book{background:var(--card);border-radius:14px;box-shadow:var(--sh);padding:22px;text-align:center;position:relative;transition:transform .35s}
+.book:hover{transform:translateY(-8px) rotate(-1deg)}
+.rank{position:absolute;top:-14px;left:-10px;background:var(--y);color:#fff;font:800 20px 'Baloo 2';width:44px;height:44px;border-radius:50%;display:grid;place-items:center;box-shadow:0 6px 12px rgba(0,0,0,.2)}
+.cover{height:210px;width:150px;margin:0 auto 18px;border-radius:4px 10px 10px 4px;color:#fff;padding:16px 12px;display:flex;flex-direction:column;justify-content:space-between;font:800 19px/1.15 'Baloo 2';box-shadow:-6px 8px 0 rgba(0,0,0,.12),0 14px 24px rgba(0,0,0,.2);transition:transform .5s;transform-style:preserve-3d}
+.book:hover .cover{transform:perspective(500px) rotateY(-18deg)}
+.cover small{font:600 12px Nunito;opacity:.85}
+.book h3{font-size:21px}.book p{margin:6px 0 14px;font-size:15px;line-height:1.5}
+.tag{display:inline-block;font-size:13px;font-weight:700;color:var(--g2);background:rgba(0,166,126,.12);border-radius:20px;padding:2px 12px;margin-bottom:8px}
+.book a.btn{padding:9px 22px;font-size:15px}
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.post{background:var(--card);border-radius:14px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.post .th{height:150px;display:grid;place-items:center;font-size:56px;position:relative;overflow:hidden}
+.post .th::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-100%);transition:transform .8s}
+.post:hover .th::after{transform:translateX(100%)}
+.post div.bd{padding:22px}.post h3{font-size:23px;margin:6px 0}.post p{margin:0 0 10px;font-size:15px;line-height:1.55}
+.post a.more{color:var(--g1);font-weight:700}
+.cta{background:var(--g1);color:#fff;position:relative;overflow:hidden;text-align:center;padding:100px 0}
+.cta::before,.cta::after{content:"";position:absolute;background:var(--g2);animation:morph 12s ease-in-out infinite}
+.cta::before{width:420px;height:420px;left:-120px;top:-120px}.cta::after{width:360px;height:360px;right:-100px;bottom:-140px;animation-delay:-5s}
+.cta .wrap{position:relative;max-width:720px}
+.cta h2{color:#fff;font-size:clamp(34px,5vw,56px);font-weight:800}
+.cta p{font-size:19px;opacity:.95}
+.perks{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:22px 0 30px}
+.perks span{background:rgba(255,255,255,.18);border-radius:30px;padding:6px 16px;font-weight:700;font-size:15px}
+form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+input{flex:1 1 260px;border:0;border-radius:40px;padding:15px 24px;font:600 16px Nunito;color:#27324f;background:#fff}
+.ok{display:none;background:#fff;color:var(--g2);font-weight:700;border-radius:20px;padding:18px 24px;margin-top:18px;animation:pop .5s cubic-bezier(.2,1.5,.4,1)}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+footer{background:#27324f;color:#c8d0e6;padding:40px 0;text-align:center;font-size:15px}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+.rv:nth-child(2){transition-delay:.12s}.rv:nth-child(3){transition-delay:.24s}.rv:nth-child(4){transition-delay:.36s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.hero h1 span{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header id="hd"><div class="wrap">
+<a class="logo" href="#topo"><i>📖</i>Ache Livros</a>
+<nav><a href="#beneficios">Benefícios</a><a href="#top">Top livros</a><a href="#blog">Blog</a><a class="keep" href="#top">Escolher livro</a></nav>
+</div></header>
+
+<section class="hero" id="topo">
+<div class="blob"></div>
+<div class="wrap">
+<div>
+<h1><span style="animation-delay:.1s">Uma</span> <span style="animation-delay:.2s">boa</span> <span style="animation-delay:.3s">leitura</span><br><span style="animation-delay:.45s">muda</span> <span style="animation-delay:.55s">o</span> <span style="animation-delay:.65s">seu</span> <span style="animation-delay:.75s">dia!</span></h1>
+<div class="dash"><b></b><b></b><b></b></div>
+<p>Dicas de leitura e os melhores livros de cada tipo, com links diretos para comprar na Amazon.</p>
+<p style="margin-top:30px"><a class="btn" href="#top">Escolher meu livro</a></p>
+<p class="hint">Clique em um livro da estante para ver o top da categoria.</p>
+</div>
+<div class="shelf">
+<div class="orb" style="background:var(--y);left:2%;top:8%">💡</div>
+<div class="orb" style="background:var(--b);right:0;top:28%;animation-delay:-2s">⭐</div>
+<button class="bk" data-c="0" aria-label="Ver os melhores livros de aventura">AVENTURA</button><button class="bk" data-c="1" aria-label="Ver os melhores livros de mistério">MISTÉRIO</button><button class="bk" data-c="2" aria-label="Ver os melhores livros de romance">ROMANCE</button><button class="bk" data-c="3" aria-label="Ver os melhores livros de hábitos">HÁBITOS</button><button class="bk" data-c="4" aria-label="Ver os melhores livros de fantasia">FANTASIA</button>
+</div>
+</div>
+</section>
+
+<section class="sec" id="beneficios"><div class="wrap">
+<div class="head rv"><h2><em>Por que</em> ler todos os dias?</h2><div class="dash"><b></b><b></b><b></b></div><p>A leitura faz bem para a mente, para o sono e para o humor. Veja o que muda quando ela entra na rotina.</p></div>
+<div class="grid">
+<div class="ben rv"><div class="ic c1">🧠</div><div class="t c1"><h3>Mente afiada</h3>Ler exercita a memória, o foco e o raciocínio.</div></div>
+<div class="ben rv"><div class="ic c2">😌</div><div class="t c2"><h3>Menos estresse</h3>Poucos minutos de leitura acalmam e relaxam.</div></div>
+<div class="ben rv"><div class="ic c3">💬</div><div class="t c3"><h3>Vocabulário rico</h3>Você se expressa melhor ao falar e ao escrever.</div></div>
+<div class="ben rv"><div class="ic c4">🌙</div><div class="t c4"><h3>Sono melhor</h3>Trocar a tela por um livro ajuda a dormir mais fácil.</div></div>
+</div>
+<div class="stats rv">
+<div><b data-n="20">0</b>minutos por dia já fazem diferença</div>
+<div><b data-n="12">0</b>livros por ano com a rotina certa</div>
+<div><b data-n="50" data-s="%">0</b>de desconto nas melhores ofertas</div>
+</div>
+</div></section>
+
+<section class="sec alt" id="top"><div class="wrap">
+<div class="head rv"><h2>Os melhores livros de <em id="cat">Aventura</em></h2><div class="dash"><b></b><b></b><b></b></div><p>Escolha uma categoria abaixo ou clique em um livro da estante no topo da página.</p></div>
+<div class="pills" id="pills"></div>
+<div class="tops" id="lista" aria-live="polite"></div>
+</div></section>
+
+<section class="sec" id="blog"><div class="wrap">
+<div class="head rv"><h2><em>Do</em> blog</h2><div class="dash"><b></b><b></b><b></b></div><p>Artigos para ler mais, escolher melhor e aproveitar cada página.</p></div>
+<div class="posts">
+<article class="post rv"><div class="th c1">⏰</div><div class="bd"><span class="tag">Rotina</span><h3>Como criar o hábito de ler em 21 dias</h3><p>Um passo a passo simples para encaixar a leitura na sua agenda.</p><a class="more" href="#top">Ler artigo</a></div></article>
+<article class="post rv"><div class="th c2">📚</div><div class="bd"><span class="tag">Listas</span><h3>10 livros curtos para ler em um fim de semana</h3><p>Histórias rápidas para quem tem pouco tempo e muita vontade.</p><a class="more" href="#top">Ler artigo</a></div></article>
+<article class="post rv"><div class="th c3">🎧</div><div class="bd"><span class="tag">Dicas</span><h3>Livro físico, e-book ou audiolivro: qual escolher?</h3><p>Vantagens de cada formato e como economizar em todos eles.</p><a class="more" href="#top">Ler artigo</a></div></article>
+</div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+<h2>Qual será a sua próxima leitura?</h2>
+<p style="margin:14px 0 28px">Escolha uma categoria e veja os melhores livros de cada uma.</p>
+<a class="btn" href="#topo">Voltar à estante</a>
+</div></section>
+
+<footer><div class="wrap">© 2026 Ache Livros · Blog de livros e leitura. Como associado da Amazon, podemos receber comissão por compras qualificadas, sem custo extra para você. Os preços mudam: confira sempre na Amazon.</div></footer>
+
+<script>
+(function(){
+var hd=document.getElementById('hd');
+function sc(){hd.classList.toggle('s',scrollY>40)}sc();addEventListener('scroll',sc,{passive:true});
+function count(el){var n=+el.dataset.n,s=el.dataset.s||'',t=0;(function f(){t+=n/40;if(t>=n){el.textContent=n+s;return}el.textContent=Math.round(t)+s;requestAnimationFrame(f)})()}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll&&e.target.querySelectorAll('[data-n]').forEach(count);io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+var TAG=''; /* coloque aqui seu ID de afiliado Amazon, ex.: 'seuid-20' */
+var C=[['Aventura',[['A Ilha do Tesouro','Robert L. Stevenson','Piratas, mapas e um tesouro escondido.'],['Vinte Mil Léguas Submarinas','Júlio Verne','Uma viagem pelo fundo do oceano.'],['Viagem ao Centro da Terra','Júlio Verne','Uma expedição rumo ao desconhecido.'],['Na Natureza Selvagem','Jon Krakauer','A história real de um jovem e a estrada.'],['O Conde de Monte Cristo','Alexandre Dumas','Fuga, vingança e reviravoltas.']]],
+['Mistério',[['O Código Da Vinci','Dan Brown','Enigmas que fazem virar a página.'],['Assassinato no Expresso do Oriente','Agatha Christie','Um crime, vários suspeitos.'],['A Garota no Trem','Paula Hawkins','Suspense psicológico e viciante.'],['O Cão dos Baskerville','Arthur Conan Doyle','Sherlock Holmes em uma lenda sombria.'],['O Silêncio dos Inocentes','Thomas Harris','Um clássico tenso do suspense.']]],
+['Romance',[['Orgulho e Preconceito','Jane Austen','O clássico dos amores difíceis.'],['Como Eu Era Antes de Você','Jojo Moyes','Emocionante do começo ao fim.'],['A Culpa É das Estrelas','John Green','Um amor jovem e inesquecível.'],['Um Dia','David Nicholls','Vinte anos de uma história de amor.'],['Jane Eyre','Charlotte Brontë','Coragem e paixão na Inglaterra antiga.']]],
+['Hábitos',[['Hábitos Atômicos','James Clear','Pequenas mudanças, grandes resultados.'],['O Poder do Hábito','Charles Duhigg','Entenda como hábitos funcionam.'],['Mindset','Carol Dweck','Como a mentalidade muda sua vida.'],['Essencialismo','Greg McKeown','Faça menos, mas melhor.'],['Rápido e Devagar','Daniel Kahneman','Como a mente toma decisões.']]],
+['Fantasia',[['O Hobbit','J. R. R. Tolkien','A grande aventura pela Terra-média.'],['O Senhor dos Anéis','J. R. R. Tolkien','A jornada épica do Anel.'],['Harry Potter e a Pedra Filosofal','J. K. Rowling','O início da saga do bruxo.'],['As Crônicas de Nárnia','C. S. Lewis','Um mundo mágico atrás do guarda-roupa.'],['A Guerra dos Tronos','George R. R. Martin','Reinos em disputa pelo poder.']]]];
+var K=['var(--b)','var(--r)','var(--g2)','var(--navy)','var(--y)'],box=document.getElementById('lista'),pl=document.getElementById('pills'),ct=document.getElementById('cat'),sh=document.querySelectorAll('.bk');
+function link(t,a){return 'https://www.amazon.com.br/s?k='+encodeURIComponent(t+' '+a)+(TAG?'&tag='+encodeURIComponent(TAG):'')}
+C.forEach(function(c,i){var b=document.createElement('button');b.textContent=c[0];b.onclick=function(){show(i,false)};pl.appendChild(b)});
+function show(i,go){
+ct.textContent=C[i][0];
+pl.querySelectorAll('button').forEach(function(b,j){b.classList.toggle('on',j==i)});
+sh.forEach(function(b,j){b.classList.toggle('on',j==i)});
+box.innerHTML=C[i][1].map(function(b,j){return '<div class="book" style="animation-delay:'+j*.08+'s"><span class="rank">'+(j+1)+'</span><div class="cover" style="background:'+K[j%5]+'"><small>'+C[i][0]+'</small>'+b[0]+'<small>'+b[1]+'</small></div><h3>'+b[0]+'</h3><p>'+b[2]+'</p><a class="btn" href="'+link(b[0],b[1])+'" target="_blank" rel="sponsored noopener">Ver na Amazon</a></div>'}).join('');
+if(go)document.getElementById('top').scrollIntoView({behavior:'smooth'});
+}
+sh.forEach(function(b){b.onclick=function(){show(+b.dataset.c,true)}});
+show(0,false);
+})();
+</script>
+</body>
+</html>
